@@ -5,7 +5,6 @@ import copy
 import math
 import numpy as np
 from utils.gcn_tools import norm_Adj
-import cv2
 import matplotlib.pyplot as plt
 
 class spatialGCN(nn.Module):
@@ -126,7 +125,6 @@ class spatialAttentionScaledGCN(nn.Module):
         batch_size, num_of_vertices, num_of_timesteps, in_channels = x.shape
 
 
-        # device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
         # ###############################使用稀疏的方式来计算score矩阵
         # score , index  = self.probatt(x,x)
         #
@@ -134,7 +132,7 @@ class spatialAttentionScaledGCN(nn.Module):
         # #按指定位置填充，其余位置填0
         # context_in[torch.arange(batch_size)[:, None, None],
         # torch.arange(num_of_timesteps)[None, :, None],
-        # index, :] = score.type_as(context_in).to(device)
+        # index, :] = score.type_as(context_in)
         # #转置，保证计算节点都完整性
         # context_out = context_in.transpose(-1,-2)
         # context_out = context_out /  math.sqrt(in_channels)

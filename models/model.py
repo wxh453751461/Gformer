@@ -109,10 +109,10 @@ class Informer(nn.Module):
 
         # print("拼接之前的维度：",enc_out.shape)
 
-        # enc_out = enc_out + gcn_out
-        enc_out = torch.cat((enc_out,gcn_out),dim = 2)
+        enc_out = enc_out + gcn_out
+        # enc_out = torch.cat((enc_out,gcn_out),dim = 2)
 
-        enc_out = self.projection_enc(enc_out)
+        # enc_out = self.projection_enc(enc_out)
         # print("拼接之后的维度：",enc_out.shape)
 
 
